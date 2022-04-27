@@ -10,6 +10,7 @@ import (
 )
 
 type bypassresponse struct {
+	Success     bool   `json:"success"`
 	BypassedUrl string `json:"destination"`
 }
 
@@ -35,6 +36,10 @@ func main() {
 	if err != nil {
 		fmt.Printf("Error %v", err)
 	}
-	fmt.Printf("Bypass Url | %v", x.BypassedUrl)
+	if x.Success {
+		fmt.Printf("Bypass Url | %v", x.BypassedUrl)
+	} else {
+		fmt.Print("Error Occured")
+	}
 
 }
